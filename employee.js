@@ -1,5 +1,6 @@
 const mongoose =require("mongoose")
-const User = require("./models/User")
+const userEmployee = require("./models/userEmployee")
+
 
 mongoose.connect("mongodb+srv://shifanapred:shifanamongoose@cluster0.hnd9fur.mongodb.net/employeePrediction?retryWrites=true&w=majority"
 ).then(()=>{
@@ -9,15 +10,13 @@ mongoose.connect("mongodb+srv://shifanapred:shifanamongoose@cluster0.hnd9fur.mon
 })
 
 const createUser=async(req,res,next)=>{
-    const newUser = new User({
-        
+    const newUser = new userEmployee({
+        UserDepartment:req.body.UserDepartment,
         UserName:req.body.UserName,
         UserEmail:req.body.UserEmail,
         UserPassword:req.body.UserPassword,
-        AdminGender:req.body.AdminGender,
-        DateofBirth:req.body.DateofBirth,
-        number:req.body.number,
-        UserAddress:req.body.UserAddress,
+        UserPassword2:req.body.UserPassword2,
+
         
     })
     const UserStore = await newUser.save();
@@ -30,7 +29,7 @@ const getUser=async(req,res,next)=>
 
   try{
     
-     prod = await User.find({ })
+     prod = await userEmployee.find({ })
 
   }
   catch(error)

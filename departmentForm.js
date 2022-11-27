@@ -1,5 +1,6 @@
 const mongoose =require("mongoose")
-const User = require("./models/User")
+const departmentFormAccount = require("./models/UserdepartmentForm")
+
 
 mongoose.connect("mongodb+srv://shifanapred:shifanamongoose@cluster0.hnd9fur.mongodb.net/employeePrediction?retryWrites=true&w=majority"
 ).then(()=>{
@@ -9,15 +10,19 @@ mongoose.connect("mongodb+srv://shifanapred:shifanamongoose@cluster0.hnd9fur.mon
 })
 
 const createUser=async(req,res,next)=>{
-    const newUser = new User({
-        
-        UserName:req.body.UserName,
-        UserEmail:req.body.UserEmail,
-        UserPassword:req.body.UserPassword,
-        AdminGender:req.body.AdminGender,
-        DateofBirth:req.body.DateofBirth,
-        number:req.body.number,
-        UserAddress:req.body.UserAddress,
+    const newUser = new departmentFormAccount({
+        FirstName:req.body.FirstName,
+        LastName:req.body.LastName,
+        Email:req.body.Email,
+        Mobile:req.body.Mobile,
+        DateOfBirth:req.body.DateOfBirth,
+        Gender:req.body.Gender,
+        Address:req.body.Address,
+        Joining:req.body.Joining,
+       Department:req.body.Department,
+        Experience:req.body.Experience,
+        Salary:req.body.Salary
+
         
     })
     const UserStore = await newUser.save();
@@ -30,7 +35,7 @@ const getUser=async(req,res,next)=>
 
   try{
     
-     prod = await User.find({ })
+     prod = await departmentFormAccount.find({ })
 
   }
   catch(error)

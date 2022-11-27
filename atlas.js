@@ -1,5 +1,5 @@
 const  MongoClient  = require('mongodb').MongoClient;
-   const url = 'mongodb+srv://shifanact:DpSSgyB8tLoh9G4U@cluster0.ninjz01.mongodb.net/products_test?retryWrites=true&w=majority'
+   const url = 'mongodb+srv://shifana:shifanamongoose@cluster0.cqxunwg.mongodb.net/?retryWrites=true&w=majority'
 const createProduct = async(req,res,next)=>{
     const newProduct = {
         username:req.body.username,
